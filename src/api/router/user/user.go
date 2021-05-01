@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/dant89/go-microservice-api/src/api/mapper"
+	"github.com/dant89/go-microservice-api/src/api/repository"
 	"github.com/julienschmidt/httprouter"
 )
 
@@ -15,7 +15,7 @@ type ApiError struct {
 }
 
 func GetUsers(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-	users := mapper.FetchUsers()
+	users := repository.GetUsers()
 
 	json, err := json.Marshal(users)
 	if err != nil {
@@ -27,7 +27,7 @@ func GetUsers(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
 func GetUser(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	userId := ps.ByName("id")
-	user, err := mapper.FetchUser(userId)
+	user, err := repository.GetUser(userId)
 	if err != nil {
 		errorResponse(w, 404, "Specified user not found.")
 		return

@@ -17,7 +17,7 @@ func main() {
 	fmt.Print(users, "\n\n")
 
 	fmt.Print("An example of a specific user output\n")
-	user := myClient.GetUser("939d531a-a051-11eb-bcbc-0242ac130002")
+	user := myClient.GetUser("939d5194-a051-11eb-bcbc-0242ac130002")
 	fmt.Print(user, "\n\n")
 
 	fmt.Print("An example of a specific not found user output\n")

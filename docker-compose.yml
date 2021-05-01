@@ -1,0 +1,21 @@
+version: '3.5'
+
+volumes:
+  cassandra:
+    driver: local
+
+services:
+  cassandra:
+    container_name: go_microservice_api-cassandra
+    image: cassandra:3.0
+    ports:
+      - "7000:7000"
+      - "9042:9042"
+    environment:
+      - "CASSANDRA_PASSWORD_SEEDER=yes"
+      - "CASSANDRA_USER=cassandra"
+      - "CASSANDRA_PASSWORD=cassandra"
+      - "MAX_HEAP_SIZE=256M"
+      - "HEAP_NEWSIZE=128M"
+    volumes:
+      - .docker/cassandra/data:/var/lib/cassandra
