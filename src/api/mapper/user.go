@@ -1,13 +1,10 @@
-package user
+package mapper
 
 import (
 	"encoding/csv"
-	"encoding/json"
+	"errors"
 	"fmt"
-	"net/http"
 	"os"
-
-	"github.com/julienschmidt/httprouter"
 )
 
 const userCsv string = "data-source/users.csv"
@@ -18,7 +15,7 @@ type User struct {
 	Email string
 }
 
-func GetUsers(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+func FetchUsers() []User {
 
 	f, err := os.Open(userCsv)
 	if err != nil {
@@ -38,9 +35,25 @@ func GetUsers(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		formattedUsers = append(formattedUsers, formattedUser)
 	}
 
-	json, err := json.Marshal(formattedUsers)
-	if err != nil {
-		panic(err)
+	return formattedUsers
+}
+
+func FetchUser(id string) (User, error) {
+	users := FetchUsers()
+
+	var formattedUser User
+	for _, user := range users {
+		if id == user.Id {
+			formattedUser = user
+			break
+		}
 	}
-	fmt.Fprint(w, string(json))
+
+	var err error
+	fmt.Println("user", formattedUser.Id)
+	if formattedUser.Id == "" {
+		err = errors.New("User not found")
+	}
+
+	return formattedUser, err
 }

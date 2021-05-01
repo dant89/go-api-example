@@ -26,3 +26,7 @@ func (c Client) Get(uri string) string {
 func (c Client) GetUsers() string {
 	return c.Get("users")
 }
+
+func (c Client) GetUser(userId string) string {
+	return c.Get("users/" + userId)
+}

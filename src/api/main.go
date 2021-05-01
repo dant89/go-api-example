@@ -1,7 +1,12 @@
 package main
 
-import api "github.com/dant89/go-microservice-api/src/api/internal"
+import (
+	"flag"
+
+	api "github.com/dant89/go-microservice-api/src/api/router"
+)
 
 func main() {
-	api.Router()
+	portParam := flag.String("p", "8080", "The localhost port to run the API web server.")
+	api.Router(*portParam)
 }
