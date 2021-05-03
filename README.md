@@ -1,11 +1,10 @@
-# go-microservices-api
+# go-gopher-api
 
-An example of how microservices can work in Golang using self contained packages.
+A lightweight Golang API framework. Aims to be easily extendable and customisable.
 
-The API is a very basic implementation that reads user data from a static csv file and formats it into json output.
 
 ## Usage
-1. Start the Docker Cassandra container: `docker-compose up`
+1. Start the Docker containers: `docker-compose up -d`
 2. Create a default Cassandra keyspace and table (this will be automated in the future):
 ```
 CREATE KEYSPACE IF NOT EXISTS go_microservice_api
@@ -16,8 +15,14 @@ CREATE TABLE "go_microservice_api"."user" ("id" TIMEUUID, PRIMARY KEY (id));
 ALTER TABLE "go_microservice_api"."user" ADD "name" TEXT;
 ALTER TABLE "go_microservice_api"."user" ADD "email" TEXT;
 ```
-3. Start the API web server: `go run src/api/main.go`
+3. Start the API web server: `go run src/server/main.go`
 4. Run the example queries via the client: `go run src/client/example/request.go`
 
-## TODO
-The aim is to create examples of microservices around an API so future additions could include aspects such as logging, caching, etc.
+## External libraries
+This project is making use of the following third party libraries, check them out!
+- [Go Redis client](https://github.com/go-redis/redis/v8)
+- [Go Cassandra client (gocql)](https://github.com/gocql/gocql)
+- [Go HTTP Router](https://github.com/julienschmidt/httprouter)
+
+## Why does this exist?
+I'm building this to improve my Go programming. If people find it useful, that's a big bonus!
