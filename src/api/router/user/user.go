@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/dant89/go-microservice-api/src/api/repository"
+	"github.com/dant89/go-gopher-api/src/api/repository"
 	"github.com/julienschmidt/httprouter"
 )
 

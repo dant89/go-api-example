@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/dant89/go-microservice-api/src/client"
+	"github.com/dant89/go-gopher-api/src/client"
 )
 
 func main() {

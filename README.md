@@ -23,6 +23,7 @@ This project is making use of the following third party libraries, check them ou
 - [Go Redis client](https://github.com/go-redis/redis/v8)
 - [Go Cassandra client (gocql)](https://github.com/gocql/gocql)
 - [Go HTTP Router](https://github.com/julienschmidt/httprouter)
+- [Go DotEnv parser](https://github.com/joho/godotenv)
 
 ## Why does this exist?
 I'm building this to improve my Go programming. If people find it useful, that's a big bonus!
