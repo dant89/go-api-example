@@ -1,4 +1,4 @@
-package database
+package repository
 
 import (
 	"errors"
@@ -14,19 +14,19 @@ type User struct {
 
 func GetUsers() []User {
 	cluster := gocql.NewCluster("127.0.0.1")
-	cluster.Keyspace = "go_microservice_api"
+	cluster.Keyspace = "go_gopher_api"
 	cluster.Consistency = gocql.Quorum
 	session, _ := cluster.CreateSession()
 
 	// TODO auto generate sample data if not exists
 	//
-	// CREATE KEYSPACE IF NOT EXISTS go_microservice_api
+	// CREATE KEYSPACE IF NOT EXISTS go_gopher_api
 	//  WITH replication = {'class': 'SimpleStrategy',
 	//                    'replication_factor' : 1}
 	//
-	// CREATE TABLE "go_microservice_api"."user" ("id" TIMEUUID, PRIMARY KEY (id));
-	// ALTER TABLE "go_microservice_api"."user" ADD "name" TEXT;
-	// ALTER TABLE "go_microservice_api"."user" ADD "email" TEXT;
+	// CREATE TABLE "go_gopher_api"."user" ("id" TIMEUUID, PRIMARY KEY (id));
+	// ALTER TABLE "go_gopher_api"."user" ADD "name" TEXT;
+	// ALTER TABLE "go_gopher_api"."user" ADD "email" TEXT;
 
 	//var userCount int
 	//if err := session.Query(`SELECT COUNT(id) FROM user`).Consistency(gocql.One).Scan(&userCount); err != nil {
@@ -58,7 +58,7 @@ func GetUsers() []User {
 
 func GetUser(userId string) (User, error) {
 	cluster := gocql.NewCluster("127.0.0.1")
-	cluster.Keyspace = "go_microservice_api"
+	cluster.Keyspace = "go_gopher_api"
 	cluster.Consistency = gocql.Quorum
 	session, _ := cluster.CreateSession()
 

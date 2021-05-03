@@ -6,7 +6,7 @@ volumes:
 
 services:
     cassandra:
-        container_name: go_microservice_api-cassandra
+        container_name: go_gopher_api-cassandra
         image: cassandra:3.0
         ports:
             - "7000:7000"
@@ -21,7 +21,7 @@ services:
             - .docker/cassandra/data:/var/lib/cassandra
 
     redis:
-        container_name: go_microservice_api-redis
+        container_name: go_gopher_api-redis
         image: redis:latest
         ports:
             - "6379:6379"
