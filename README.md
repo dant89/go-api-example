@@ -15,8 +15,8 @@ CREATE TABLE "go_gopher_api"."user" ("id" TIMEUUID, PRIMARY KEY (id));
 ALTER TABLE "go_gopher_api"."user" ADD "name" TEXT;
 ALTER TABLE "go_gopher_api"."user" ADD "email" TEXT;
 ```
-3. Start the API web server: `go run src/server/main.go`
-4. Run the example queries via the client: `go run src/client/example/request.go`
+3. Start the API web server: `go run src/api/server/main.go`
+4. Run the example queries via the client: `go run src/api/client/example/request.go`
 
 ## External libraries
 This project is making use of the following third party libraries, check them out!
